@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>*{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      
+      }
+      body{
+        background-color: #000000;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 2.5rem;
+        letter-spacing: 20px;
+        word-spacing: 20px;
+      }
+      .wrapper{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        margin-top: 4rem;
+      }
+      .container{
+        height: 400px;
+        display: flex;
+        flex-direction: nowrap;
+        justify-content: start;
+      }
+      .card{
+        width: 80px;
+        border-radius: .75rem;
+        background-size: cover;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 2rem;
+        margin: 0 10px;
+        display: flex;
+        align-items: flex-end;
+        transition: .6s cubic-bezier(.28, -0.03,0,0.99);
+        box-shadow: 0px 10px 30px -5px rgba(241, 241, 241, 0.8);
+      }
+      .card > .row{
+        color: white;
+        display: flex;
+        flex-direction: nowrap;
+      }
+      .card > .row > .icon{
+        background: #223;
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px;
+        font-family: algrien  ;
+      }
+      .card > .row > .description{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        height: 80px;
+        width: 520px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition-delay: .3s;
+        transition: all .3s ease;
+        flex-wrap: wrap-reverse;
+      }
+      .description p{
+        color: #ffffff;
+        padding-top: 5px;
+      
+      }
+      .description h4{
+        text-transform: uppercase;
+      }
+      input{
+        display: none;
+      }
+      input:checked + label{
+        width: 600px;
+      }
+      input:checked + label .description{
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      
+      }
+      .card[for="c1"]{
+    background-image: url('mee ishan.jpeg');
+   
+      }
+      .card[for="c2"]{
+        background-image: url('gandhigth ishan.jpeg');
+      
+      }
+      .card[for="c3"]{
+        background-image: url('img/image-3.avif');
+      }
+      .card[for="c4"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+      
+      .card[for="c5"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c6"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c7"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c8"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c9"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c10"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c11"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+    
+      .card[for="c12"]{
+        background-image: url('img/image-1.avif');
+        
+      }
+      p { color: #000000;
+
+      }
+      .pogition{
+        position: absolute;
+        top: 600px;
+        right: 45%;
+        color: #ffffffcf;
+        text-shadow: 2px 2px 4px rgba(255, 251, 251, 0.678);
+      }
+      a{
+        text-decoration: none;
+        color: #ffffff;
+      }
+      h1{
+        color: #ffffffef;
+        text-shadow: 10px 4px 8px rgba(190, 183, 183, 0.678);
+      }
+      ul{
+      color: #ffffff93;
+      }
+      a{
+        text-decoration: none;
+        color: #ffffff;
+      }
+      /* Three-dot menu icon styling */
+      .menu-icon {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 5px auto;
+            background-color: rgb(247, 245, 245);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+         /* Transformations for animation */
+         .menu-icon.open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Menu options styling */
+        .menu-options {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.323);
+            border: 1px solid #cccccc00;
+            box-shadow: 0px 4px 8px rgba(111, 108, 108, 0.959);
+            margin-top: 10px;
+            padding: 10px;
+            list-style-type: none;
+        }
+
+        .menu-options a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+
+        .menu-options a:hover {
+            background-color: #f1f1f17e;
+        }
+
+        /* Show menu when .open is added to the container */
+        .menu-icon.open + .menu-options {
+            display: block;
+        }
+        .pogition-dot
+        { position: absolute;
+          left:90% ;
+        
+          
+          bottom:90%;
+
+        }
+        li{
+          padding: 2px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            color: aquamarine;
+            font-family: Magneto;
+          }
+          li:hover{
+            transform: scale(1.5);
+          }
+          u {
+            font-family: Algerian;
+          }
+</style>
+</head>
+<body>
+  <h1>Imaginary Ishan</h1>
+  <div class="pogition-dot">
+  <div class="menu-container">
+    <!-- Three-dot animated icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Menu options -->
+    <ul class="menu-options">
+        <li><a href="#">Home</a></li>
+        <li><a href="file:///D:/html%20folder/contuct%20advance%20page.html">contuct</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#"></a></li>
+    </ul>
+  </div>
+</div>
+   <script>
+      function toggleMenu()
+       {
+          var menuIcon = document.querySelector('.menu-icon');
+          var menuOptions = document.querySelector('.menu-options');
+          menuIcon.classList.toggle('open');
+      }
+
+      // Hide the menu when clicking outside of it
+      window.onclick = function(event) {
+          if (!event.target.closest('.menu-container')) {
+              var menuIcon = document.querySelector('.menu-icon');
+              var menuOptions = document.querySelector('.menu-options');
+              if (menuIcon.classList.contains('open')) {
+                  menuIcon.classList.remove('open');
+              }
+          }
+      }
+    </script>
+    <div class="wrapper">
+        <div class="container">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="card">
+                <div class="row">
+                    <div class="icon">I</div>
+                    <div class="description">
+                        <h4>Imaginary_Ishan</h4>
+                       
+                        <p><u>place-</u>Kanakdurga Tample, Jhargram, Westbanagal, India </p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c2">
+            <label for="c2" class="card">
+                <div class="row">
+                    <div class="icon">II</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u> <a>Gandhigath</a>, <a>Midnapore</a> , Paschim Medinipur, Wesstbangal, India</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3">
+            <label for="c3" class="card">
+                <div class="row">
+                    <div class="icon">III</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u>Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c4">
+            <label for="c4" class="card">
+                <div class="row">
+                    <div class="icon">IV</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u> Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c5">
+            <label for="c5" class="card">
+                <div class="row">
+                    <div class="icon">V</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u> Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c6">
+            <label for="c6" class="card">
+                <div class="row">
+                    <div class="icon"> VI</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u>Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c7">
+            <label for="c7" class="card">
+                <div class="row">
+                    <div class="icon">VII</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u> Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c8">
+            <label for="c8" class="card">
+                <div class="row">
+                    <div class="icon">VIII</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u>Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c9">
+            <label for="c9" class="card">
+                <div class="row">
+                    <div class="icon">IX</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u>Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c10">
+            <label for="c10" class="card">
+                <div class="row">
+                    <div class="icon">X</div>
+                    <div class="description">
+                        <h4>Natuure</h4>
+                        <p><u>place-</u>Discover the Wonders of Nature</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="pogition">
+   <h3><a href="file:///D:/html%20folder/galary2.html"><u> Page</u>2</a> </h3>
+    </div>
+    </body>
+    </html>
